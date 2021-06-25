@@ -24,7 +24,7 @@
             }
         ],
         "Command": [
-            "/bin/sh",
+            " || /bin/sh",
             "-c",
             "ls /opt/appdynamics-agent/dotnet"
         ],
