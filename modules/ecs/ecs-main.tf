@@ -80,6 +80,7 @@ resource "aws_ecs_service" "main" {
   health_check_grace_period_seconds  = 60
   launch_type                        = "FARGATE"
   scheduling_strategy                = "REPLICA"
+  enable_execute_command             = true
 
   network_configuration {
     security_groups  = var.ecs_service_security_groups
