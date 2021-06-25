@@ -1,7 +1,9 @@
 name        = "appd-project-name-demo1"
 environment = "test"
 #availability_zones  = ["eu-west-2", "eu-west-1"] #subnets not avilable in my preferered regions.. 
-availability_zones  = ["eu-central-1a", "eu-central-1b"]
+region      = "us-west-2"
+aws-region  = "us-west-2"
+availability_zones  = ["us-west-2a", "us-west-2b"]
 private_subnets     = ["10.0.0.0/20", "10.0.32.0/20"]
 public_subnets      = ["10.0.16.0/20", "10.0.48.0/20"]
 tsl_certificate_arn = "mycertificatearn"
