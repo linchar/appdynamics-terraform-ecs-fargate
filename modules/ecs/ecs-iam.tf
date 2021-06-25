@@ -65,7 +65,10 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attach
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-
+resource "aws_iam_role_policy_attachment" "ecs-task-role-policy-attachment" {
+  role       = aws_iam_role.ecs_task_role.name
+  policy_arn = "arn:aws:iam::361863697511:policy/SSMExecution"
+}
 
 resource "aws_iam_role_policy_attachment" "ecs-task-role-policy-attachment-for-secrets" {
   role       = aws_iam_role.ecs_task_execution_role.name
