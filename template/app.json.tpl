@@ -12,7 +12,7 @@
         "Essential": true,
         "DependsOn": [
             {
-                "containerName": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
+                "containerName": "appd-core-agent",
                 "condition": "COMPLETE"
             }
         ],
@@ -24,7 +24,7 @@
             }
         ],
         "Command": [
-            " || /bin/sh",
+            "/bin/sh",
             "-c",
             "ls /opt/appdynamics-agent/dotnet"
         ],
@@ -90,9 +90,21 @@
         ]
     },
     {
-        "Name": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
-        "Image": "${APPDYNAMICS_AGENT_IMAGE}",
+        "Name": "appd-core-agent",
+        "Image": "alpine",
         "Essential": false,
+        "volumesFrom": [
+            {
+                "readOnly": false,
+                "sourceContainer": "${APPDYNAMICS_AGENT_CONTAINER_NAME}"
+            }   
+        ],
+        "DependsOn": [
+            {
+                "containerName": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
+                "condition": "START"
+            }
+        ],
         "Command": [
             "/bin/sh",
             "-c",
@@ -105,5 +117,10 @@
                 "readOnly": false
             }
         ]
+    },
+    {
+        "Name": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
+        "Image": "${APPDYNAMICS_AGENT_IMAGE}",
+        "Essential": false
     }
 ]
