@@ -15,7 +15,5 @@ APPDYNAMICS_GLOBAL_ACCOUNT_NAME          = "customer1_dd34e97c-2906-4a86-a005-8c
 CORECLR_ENABLE_PROFILING                 = "1"
 CORECLR_PROFILER                         = "{57e1aa68-2229-41aa-9931-a6e93bbc64d8}"
 CORECLR_PROFILER_PATH                    = "/opt/appdynamics-agent/dotnet/libappdprofiler.so"
-# According to AWS to use volumes from image, the image must be built with VOLUME declarative
-# My image was build based on 21.7.0 and just added the VOLUME instruction. See Dockerfile.
-APPDYNAMICS_AGENT_IMAGE                  = "lincharles/dotnet-core-agent:21.7.0"
+APPDYNAMICS_AGENT_IMAGE                  = "appdynamics/dotnet-core-agent:21.7.0"
 APPDYNAMICS_AGENT_CONTAINER_NAME         = "AppDynamicsAgentContainer"

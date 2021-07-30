@@ -12,7 +12,7 @@
         "Essential": true,
         "DependsOn": [
             {
-                "containerName": "appd-core-agent",
+                "containerName": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
                 "condition": "COMPLETE"
             }
         ],
@@ -90,25 +90,11 @@
         ]
     },
     {
-        "Name": "appd-core-agent",
-        "Image": "alpine",
+        "Name": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
+        "Image": "${APPDYNAMICS_AGENT_IMAGE}",
         "Essential": false,
-        "volumesFrom": [
-            {
-                "readOnly": false,
-                "sourceContainer": "${APPDYNAMICS_AGENT_CONTAINER_NAME}"
-            }   
-        ],
-        "DependsOn": [
-            {
-                "containerName": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
-                "condition": "START"
-            }
-        ],
         "Command": [
-            "/bin/sh",
-            "-c",
-            "cp -r /opt/appdynamics/. /opt/temp"
+            "/opt/temp"
         ],
         "mountPoints": [
             {
@@ -117,10 +103,5 @@
                 "readOnly": false
             }
         ]
-    },
-    {
-        "Name": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
-        "Image": "${APPDYNAMICS_AGENT_IMAGE}",
-        "Essential": false
     }
 ]
